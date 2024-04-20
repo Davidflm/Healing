@@ -1,4 +1,10 @@
 {% extends "base.html" %} {% block 'body' %}
+{% load static %}
+
+{%block head%}
+<link rel="stylesheet" href="{% static 'users/css/users.css' %}">
+{% endblock%}
+
 <div class="container-fluid">
   <div class="row">
     <div class="col-md d-flex justify-content-center">
@@ -6,7 +12,7 @@
         <br />
         <br />
         <section class="cont-logo">
-          <img class="logo" src="#" /> <label class="text-logo">HEALING</label>
+          <img class="logo" src="{% static 'geral/img/logo.png' %}" /> <label class="text-logo">HEALING</label>
         </section>
         <hr />
         <form action="" method="post">
@@ -29,7 +35,7 @@
             placeholder="email@email.com"
             class="form-control"
           />
-          Aula 1 3<br />
+          <br />
           <div class="row">
             <div class="col-md">
               <label for="">Senha</label>
@@ -64,7 +70,7 @@
     <div
       class="col-md bg-main d-flex justify-content-center align-items-center"
     >
-      <img src="#" alt="" />
+      <img src="{% static 'users/img/ilustracao.png' %}" alt="" />
     </div>
   </div>
 </div>
