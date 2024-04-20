@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from django.contrib.auth.models import User
 
 # Create your views here.
 def registry(request):
@@ -15,8 +16,20 @@ def registry(request):
       print('Erro 2')
       return redirect('/users/register')
     
-    if len.senha < 6:
+    users = User.objects.filter(username=username)
+    
+    if users.exists():
+      print('Erro 01')
+      return redirect('/users/register')
+    
+    if len(senha) < 6:
       print('Erro 3')
       return redirect('/users/register')
     
-    return HttpResponse(f"{username} ---{email}----{senha}----{confirmar_senha}")
+    user = User.objects.create_user(
+      username=username,
+      email=email,
+      password=senha,
+    )
+    
+    return redirect('/users/login')
