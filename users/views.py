@@ -51,3 +51,7 @@ def login_view(request):
       return redirect('pacientes/home')
     messages.add_message(request, constants.ERROR, 'Usuário ou Senha inválida')
     return redirect('/users/login')
+
+def logout(request):
+  auth.logout(request)
+  return redirect('/users/login')
